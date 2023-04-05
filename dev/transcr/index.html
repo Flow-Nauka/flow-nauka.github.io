@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+
+  <title>Transkrypcje - ekstrakcja sekcji</title>
+  <style>
+    body {
+      /* font-size: 18px; */
+      overflow-y: hidden;
+      padding: 2rem 4rem;
+      max-height: 100vh;
+    }
+
+    .error {
+      border: 1px solid crimson;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hidden { display: none; }
+
+    .main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .preview {
+      max-height: 90vh;
+    }
+
+    .preview pre {
+      white-space: pre-wrap;
+      border: 1px solid lightblue;
+      overflow-y: scroll;
+      max-height: 1000px;
+    }
+  </style>
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <h2>Dodaj plik .json do ekstrakcji danych transkrypcji podzielonej na linie i odcinki czasowe</h2>
+
+  <div id="errnote" class="error hidden">
+    <p>Wystąpił jakiś błąd, spróbuj po kolei jeszcze raz lub skontaktuj się Andrzejem, ze screenshotem, plikiem wejściowym i tymi danymi:</p>
+    <pre></pre>
+    <button onclick="window.location.reload()">Odśwież i spróbuj jeszcze raz</button>
+  </div> 
+
+  <div class="main">
+    <div><input type="file" id="datasource"></div>
+    <div><label for="drainext">Format wyjściowy</label></div>
+    <div>
+      <select id="drainext">
+        <option value="">Wybierz format wyjściowy</option>
+        <option value="txt">tekst wklejalny do arkusza</option>
+        <option value="csv">arkusz csv (seprarator: "|")</option>
+        <!-- <option value="tsv">.tsv</option> -->
+      </select>
+    </div>
+    <div><button disabled id="datadrain">Pobierz wynik</button></div>
+  </div>
+  <h3>Podgląd</h3>
+  <div class="preview">
+    <pre id="result">
+      Czekam na dane...
+    </pre>
+  </div>
+</body>
+
+</html>
